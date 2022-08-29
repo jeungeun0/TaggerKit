@@ -136,10 +136,6 @@ public class TKCollectionView: UIViewController {
         if layoutType == .Normal {
             tagCellLayout = TagCellLayout(alignment: .left, delegate: self)
             (tagCellLayout as! TagCellLayout).delegate = self
-            if let tagsCollectionView = tagsCollectionView {
-//                tagsCollectionView.alwaysBounceVertical = true
-                tagsCollectionView.alwaysBounceHorizontal = true
-            }
             
         } else {
             tagCellLayout = TagCellFlowLayout(alignment: .left, delegate: self)
@@ -147,6 +143,12 @@ public class TKCollectionView: UIViewController {
         }
         
         tagsCollectionView                             = UICollectionView(frame: view.bounds, collectionViewLayout: tagCellLayout)
+        
+        
+//        if let tagsCollectionView = tagsCollectionView {
+//                tagsCollectionView.alwaysBounceVertical = true
+            tagsCollectionView.alwaysBounceHorizontal = true
+//        }
         tagsCollectionView.dataSource                 = self
         tagsCollectionView.delegate                 = self
         tagsCollectionView.backgroundColor            = UIColor.clear
