@@ -47,7 +47,7 @@ public class TKCollectionView: UIViewController {
     public var tagsCollectionView: UICollectionView!
     
     /// The custom cell layout of the single cell
-    public var tagCellLayout: TagCellLayout!
+    public var tagCellLayout: UICollectionViewLayout!
     
     /// If tags in the collection are given an action of type "add", a receiver can be automatically binded on this property
     public var receiver: TKCollectionView?
@@ -62,14 +62,22 @@ public class TKCollectionView: UIViewController {
     /// The array containing all the tags of the collection
     public var tags = [String]()
     
+    public enum LayoutType {
+        case Normal, Flow
+    }
+    
+    public var layoutType: LayoutType = .Normal
+    
     // MARK: - Lifecycle methods
     
-    public convenience init(tags: [String], action: ActionType, receiver: TKCollectionView?) {
+    public convenience init(tags: [String], action: ActionType, receiver: TKCollectionView?, layoutType: LayoutType) {
         self.init()
         
         self.action   = action
         self.receiver = receiver
         self.tags     = tags
+        self.layoutType = layoutType
+        
     }
     
     public override func viewDidLoad() {
@@ -124,8 +132,14 @@ public class TKCollectionView: UIViewController {
     // MARK: - Class Methods
     
     private func setupView() {
-        tagCellLayout             = TagCellLayout(alignment: .left, delegate: self)
-        tagCellLayout.delegate     = self
+        
+        if layoutType == .Normal {
+            tagCellLayout = TagCellLayout(alignment: .left, delegate: self)
+            (tagCellLayout as! TagCellLayout).delegate = self
+        } else {
+            tagCellLayout = TagCellFlowLayout(alignment: .left, delegate: self)
+            (tagCellLayout as! TagCellFlowLayout).delegate = self
+        }
         
         tagsCollectionView                             = UICollectionView(frame: view.bounds, collectionViewLayout: tagCellLayout)
         tagsCollectionView.dataSource                 = self

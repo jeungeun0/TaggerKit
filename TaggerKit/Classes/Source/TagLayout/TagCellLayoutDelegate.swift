@@ -16,3 +16,11 @@ public protocol TagCellLayoutDelegate: NSObjectProtocol {
     func tagCellLayoutInteritemVerticalSpacing(layout: TagCellLayout) -> CGFloat
     
 }
+
+public protocol TagCellFlowLayoutDelegate: NSObjectProtocol {
+    
+    func tagCellFlowLayoutTagSize(layout: TagCellFlowLayout, atIndex index:Int) -> CGSize
+    func tagCellFlowLayoutInteritemHorizontalSpacing(layout: TagCellFlowLayout) -> CGFloat
+    func tagCellFlowLayoutInteritemVerticalSpacing(layout: TagCellFlowLayout) -> CGFloat
+    
+}

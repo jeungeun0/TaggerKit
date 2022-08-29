@@ -34,13 +34,16 @@ class ViewController: UIViewController {
                                         "Tech", "Design", "Writing", "Social Media"
                                        ],
                                        action: .removeTag,
-                                       receiver: nil)
+                                       receiver: nil,
+                                       layoutType: .Normal)
         
         allTags = TKCollectionView(tags: [
                                     "Cars", "Skateboard", "Freetime", "Humor", "Travel", "Music", "Places", "Journalism", "Sports"
                                    ],
                                    action: .addTag,
-                                   receiver: productTags)
+                                   receiver: productTags,
+                                   layoutType: .Flow)
+        (allTags.tagCellLayout as! TagCellFlowLayout).scrollDirection = .horizontal
         
         // Set the current controller as the delegate of both collections
         productTags.delegate = self

@@ -88,6 +88,28 @@ extension TKCollectionView: TagCellLayoutDelegate {
 	}
 }
 
+// MARK: - Extension to TagCellFlowLayoutDelegate
+
+extension TKCollectionView: TagCellFlowLayoutDelegate {
+    
+    public func tagCellFlowLayoutInteritemHorizontalSpacing(layout: TagCellFlowLayout) -> CGFloat {
+        return customSpacing
+    }
+    
+    public func tagCellFlowLayoutInteritemVerticalSpacing(layout: TagCellFlowLayout) -> CGFloat {
+        return customSpacing
+    }
+    
+    public func tagCellFlowLayoutTagSize(layout: TagCellFlowLayout, atIndex index: Int) -> CGSize {
+        let tagName     = tags[index]
+        let font         = customFont
+        let cellSize     = textSize(text: tagName, font: font, collectionView: tagsCollectionView)
+        
+        return cellSize
+    }
+    
+}
+
 // MARK: - Extension to TagCellDelegate (action delegate)
 
 extension TKCollectionView: TagCellDelegate {

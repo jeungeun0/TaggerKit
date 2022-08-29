@@ -28,6 +28,7 @@
 		E9941AE5389DC59BCC0042D20DAC752B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 312B988EF117AE4DE76A268D970131FE /* UIKit.framework */; };
 		EEF6D0C5499C1CDE7E842A9D92CA95DC /* Pods-TaggerKit_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C7DD3DB540F74FF9ABAC62432AA96A /* Pods-TaggerKit_Example-dummy.m */; };
 		F3A89321E5D993C19AB8032E7996525D /* Pods-TaggerKit_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EA043D47D3353563BF0B661420B0369A /* Pods-TaggerKit_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F6D20F1228BCA22B00D426C0 /* TagCellFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D20F1128BCA22B00D426C0 /* TagCellFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		EA043D47D3353563BF0B661420B0369A /* Pods-TaggerKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TaggerKit_Example-umbrella.h"; sourceTree = "<group>"; };
 		ECA504AD23103B48D89761712DB84E76 /* TaggerKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaggerKit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		F634FFE07861587FC11384E547CE78A3 /* Pods-TaggerKit_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TaggerKit_Tests-dummy.m"; sourceTree = "<group>"; };
+		F6D20F1128BCA22B00D426C0 /* TagCellFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCellFlowLayout.swift; sourceTree = "<group>"; };
 		F9CC336EE12985730894A5F3EC3660BC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		FABBDE3022ECAC9B00454A68 /* TaggerKit.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TaggerKit.xctestplan; sourceTree = "<group>"; };
 		FF05A3C76462433CFE1C2E74F43F3AF8 /* TaggerKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "TaggerKit-Info.plist"; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				0D7957A9DD3C854511BD4C79B4729C88 /* LayoutInfo.swift */,
 				52767554A98CE927838BD9127EB5C0B6 /* TagCellLayout.swift */,
 				C821B0237015CE5A133907E1831C5287 /* TagCellLayoutDelegate.swift */,
+				F6D20F1128BCA22B00D426C0 /* TagCellFlowLayout.swift */,
 			);
 			name = TagLayout;
 			path = TaggerKit/Classes/Source/TagLayout;
@@ -491,6 +494,7 @@
 				4A9A9B4EE9C9B73D6F7B8BC78AFC895B /* LayoutInfo.swift in Sources */,
 				CEF766B54745E767E36C644B1B34BAED /* TagCellLayout.swift in Sources */,
 				2702E264146825CA6077E8D6F53C17E8 /* TagCellLayoutDelegate.swift in Sources */,
+				F6D20F1228BCA22B00D426C0 /* TagCellFlowLayout.swift in Sources */,
 				2964385411CB7ED0872F5AAE87EE3E5A /* TaggerKit-dummy.m in Sources */,
 				222EA7433D311D42BEED9886D5674FA2 /* TKCollectionView+.swift in Sources */,
 				00BC1B1D68E7AB908E7E9C79F2E45428 /* TKCollectionView.swift in Sources */,
