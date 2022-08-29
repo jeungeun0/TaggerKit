@@ -47,7 +47,7 @@ public class TKCollectionView: UIViewController {
     public var tagsCollectionView: UICollectionView!
     
     /// The custom cell layout of the single cell
-    public var tagCellLayout: UICollectionViewLayout!
+    public var tagCellLayout: TagCellFlowLayout!
     
     /// If tags in the collection are given an action of type "add", a receiver can be automatically binded on this property
     public var receiver: TKCollectionView?
@@ -133,21 +133,22 @@ public class TKCollectionView: UIViewController {
     
     private func setupView() {
         
-        if layoutType == .Normal {
-            tagCellLayout = TagCellLayout(alignment: .left, delegate: self)
-            (tagCellLayout as! TagCellLayout).delegate = self
-            
-        } else {
-            tagCellLayout = TagCellFlowLayout(alignment: .left, delegate: self)
-            (tagCellLayout as! TagCellFlowLayout).delegate = self
-        }
-        
+//        if layoutType == .Normal {
+//            tagCellLayout = TagCellLayout(alignment: .left, delegate: self)
+//            (tagCellLayout as! TagCellLayout).delegate = self
+//
+//        } else {
+//            tagCellLayout = TagCellFlowLayout(alignment: .left, delegate: self)
+//            (tagCellLayout as! TagCellFlowLayout).delegate = self
+//        }
+        tagCellLayout.scrollDirection = .horizontal
         tagsCollectionView                             = UICollectionView(frame: view.bounds, collectionViewLayout: tagCellLayout)
         
         
 //        if let tagsCollectionView = tagsCollectionView {
 //                tagsCollectionView.alwaysBounceVertical = true
-            tagsCollectionView.alwaysBounceHorizontal = true
+//            tagsCollectionView.alwaysBounceHorizontal = true
+        
 //        }
         tagsCollectionView.dataSource                 = self
         tagsCollectionView.delegate                 = self
