@@ -136,7 +136,7 @@ public class TKCollectionView: UIViewController {
         if layoutType == .Normal {
             tagCellLayout = TagCellLayout(alignment: .left, delegate: self)
             (tagCellLayout as! TagCellLayout).delegate = self
-//            tagsCollectionView.alwaysBounceVertical     = true
+            tagsCollectionView.alwaysBounceVertical     = true
             tagsCollectionView.alwaysBounceHorizontal = true
         } else {
             tagCellLayout = TagCellFlowLayout(alignment: .left, delegate: self)
