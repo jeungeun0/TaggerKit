@@ -55,6 +55,8 @@ public class TKCollectionView: UIViewController {
     /// A controller that confromed to be a delegate for the tags collection view
     public var delegate: TKCollectionViewDelegate?
     
+    public var setupFunc: (() -> Void)?
+    
     lazy var oneLineHeight: CGFloat = { customFont.pointSize * 2 }()
     
     var longTagIndex = 1
@@ -70,20 +72,21 @@ public class TKCollectionView: UIViewController {
     
     // MARK: - Lifecycle methods
     
-    public convenience init(tags: [String], action: ActionType, receiver: TKCollectionView?, layoutType: LayoutType) {
+    public convenience init(tags: [String], action: ActionType, receiver: TKCollectionView?, layoutType: LayoutType, setupFunc: (() -> Void)?) {
         self.init()
         
         self.action   = action
         self.receiver = receiver
         self.tags     = tags
         self.layoutType = layoutType
+        self.setupFunc = setupFunc
         
     }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupView()
+        setupView(setupFunc)
     }
     
     public override func viewDidLayoutSubviews() {
@@ -131,30 +134,42 @@ public class TKCollectionView: UIViewController {
     
     // MARK: - Class Methods
     
-    private func setupView() {
+    public func setupView(_ setupFunt: (() -> Void)?) {
         
-//        if layoutType == .Normal {
-//            tagCellLayout = TagCellLayout(alignment: .left, delegate: self)
-//            (tagCellLayout as! TagCellLayout).delegate = self
-//
-//        } else {
-//            tagCellLayout = TagCellFlowLayout(alignment: .left, delegate: self)
-//            (tagCellLayout as! TagCellFlowLayout).delegate = self
-//        }
-        tagCellLayout.scrollDirection = .horizontal
-        tagsCollectionView                             = UICollectionView(frame: view.bounds, collectionViewLayout: tagCellLayout)
+        if setupFunt == nil {
+            //        if layoutType == .Normal {
+            //            tagCellLayout = TagCellLayout(alignment: .left, delegate: self)
+            //            (tagCellLayout as! TagCellLayout).delegate = self
+            //
+            //        } else {
+            //            tagCellLayout = TagCellFlowLayout(alignment: .left, delegate: self)
+            //            (tagCellLayout as! TagCellFlowLayout).delegate = self
+            //        }
+//                    tagCellLayout.scrollDirection = .horizontal
+                    tagsCollectionView                             = UICollectionView(frame: view.bounds, collectionViewLayout: tagCellLayout)
+                    
+                    
+            //        if let tagsCollectionView = tagsCollectionView {
+            //                tagsCollectionView.alwaysBounceVertical = true
+            //            tagsCollectionView.alwaysBounceHorizontal = true
+                    
+            //        }
+                    tagsCollectionView.dataSource                 = self
+                    tagsCollectionView.delegate                 = self
+                    tagsCollectionView.backgroundColor            = UIColor.clear
+                    tagsCollectionView.register(TKTagCell.self, forCellWithReuseIdentifier: "TKCell")
+                    
+                    view.addSubview(tagsCollectionView)
+        } else {
+            setupFunt!()
+            tagsCollectionView.dataSource                 = self
+            tagsCollectionView.delegate                 = self
+            tagsCollectionView.backgroundColor            = UIColor.clear
+            tagsCollectionView.register(TKTagCell.self, forCellWithReuseIdentifier: "TKCell")
+            
+            view.addSubview(tagsCollectionView)
+        }
         
-        
-//        if let tagsCollectionView = tagsCollectionView {
-//                tagsCollectionView.alwaysBounceVertical = true
-//            tagsCollectionView.alwaysBounceHorizontal = true
-        
-//        }
-        tagsCollectionView.dataSource                 = self
-        tagsCollectionView.delegate                 = self
-        tagsCollectionView.backgroundColor            = UIColor.clear
-        tagsCollectionView.register(TKTagCell.self, forCellWithReuseIdentifier: "TKCell")
-        
-        view.addSubview(tagsCollectionView)
+
     }
 }
